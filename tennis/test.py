@@ -61,6 +61,7 @@ def play_game(TennisGame, p1Points, p2Points, p1Name, p2Name):
             game.won_point(p2Name)
     return game
 
+
 class TestTennis(unittest.TestCase):
 
     # Unit test 1
@@ -76,6 +77,7 @@ class TestTennis(unittest.TestCase):
             (p1Points, p2Points, score, p1Name, p2Name) = testcase
             game = play_game(TennisGame2, p1Points, p2Points, p1Name, p2Name)
             self.assertEqual(score, game.score())
+
 
 if __name__ == "__main__":
     unittest.main()
