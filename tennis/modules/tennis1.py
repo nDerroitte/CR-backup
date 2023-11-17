@@ -27,8 +27,7 @@ class TennisGame1:
             p = ["Love-All", "Fifteen-All", "Thirty-All", "Deuce", "Deuce"]
             result = p[self.p2points]
         elif (self.p1points>=4 or self.p2points>=4):
-            minusResult = self.p1points-self.p2points
-            if (minusResult==1 or minusResult==-1):
+            if (abs(self.p1points-self.p2points)==1): # if advantage
                 result ="Advantage " + self.who_won()
             else:
                 result ="Win for " + self.who_won()
