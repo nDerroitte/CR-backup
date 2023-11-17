@@ -25,6 +25,15 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEquals(3, items[0].quality)
         self.assertEquals(42, items[6].quality)
         self.assertEquals("Coffee, -1, 3", items[0].__repr__())
+        gilded_rose.update_quality()
+        self.assertEquals(1, items[0].quality)
+        self.assertEquals(16, items[4].quality)
+        gilded_rose.update_quality()
+        self.assertEquals(0, items[0].quality)
+        self.assertEquals(19, items[4].quality)
+
+
+
 
 
 

@@ -16,7 +16,7 @@ if __name__ == "__main__":
         Item(name="Conjured Mana Cake", sell_in=3, quality=6), 
     ]
 
-    days = 2
+    days = 20
     for day in range(days):
         print("-------- day %s --------" % day)
         print("name, sellIn, quality")
