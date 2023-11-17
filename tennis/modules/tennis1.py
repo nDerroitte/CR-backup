@@ -14,22 +14,24 @@ class TennisGame1:
         else:
             self.p2points += 1
 
+    def who_won(self):
+        if self.p1points > self.p2points:
+            return self.player1Name
+        else:
+            return self.player2Name
+
     def score(self):
         result = ""
         tempScore=0
         if (self.p1points==self.p2points):
-            p = ["Love-All", "Fifteen-All", "Thirty-All", "Deuce"]
+            p = ["Love-All", "Fifteen-All", "Thirty-All", "Deuce", "Deuce"]
             result = p[self.p2points]
         elif (self.p1points>=4 or self.p2points>=4):
             minusResult = self.p1points-self.p2points
-            if (minusResult==1):
-                result ="Advantage " + self.player1Name
-            elif (minusResult ==-1):
-                result ="Advantage " + self.player2Name
-            elif (minusResult>=2):
-                result = "Win for " + self.player1Name
+            if (minusResult==1 or minusResult==-1):
+                result ="Advantage " + self.who_won()
             else:
-                result ="Win for " + self.player2Name
+                result ="Win for " + self.who_won()
         else:
             for i in range(1,3):
                 if (i==1):
