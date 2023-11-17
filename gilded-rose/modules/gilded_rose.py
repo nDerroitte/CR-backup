@@ -26,6 +26,7 @@ class GildedRose(object):
         if item.sell_in < 0:
             item.quality = 0
 
+
     def update_regular_item_quality(self, item):
         if item.quality > 0 and item.name != "Sulfuras, Hand of Ragnaros":
             item.quality -= 1
