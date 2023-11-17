@@ -17,16 +17,27 @@ class TennisGame2:
         
         currently_winning = self.player1 if self.point_player1 > self.point_player2 else self.player2
         score = {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}
+        pointDiff = abs(self.point_player1-self.point_player2)
         
         # Situation 1: . maximum score of 40 for everybody (p.1 and p.2 < 4)
         #              . not yet at 40-40 (p1 + p2 < 6)
         if (self.point_player1 < 4 and self.point_player2 < 4) and (self.point_player1 + self.point_player2 < 6):
-            return score[self.point_player1] + "-All" if (self.point_player1 == self.point_player2) else score[self.point_player1] + "-" + score[self.point_player2]
-        
+            # equality
+            if (self.point_player1 == self.point_player2):
+                return score[self.point_player1] + "-All"
+            # no equality
+            else:
+                return score[self.point_player1] + "-" + score[self.point_player2]
+            
+                    
         # Situation 2: Either "Deuce", "Advantage" or "Win"
         else:
+            # equality ==> "Deuce"
             if (self.point_player1 == self.point_player2):
                 return "Deuce"
-            
-            pointDiff = abs(self.point_player1-self.point_player2)
-            return "Advantage " + currently_winning if (pointDiff == 1) else "Win for " + currently_winning
+            # pointDiff == 1 ==> "Advantage"
+            elif (pointDiff == 1):
+                return "Advantage " + currently_winning
+            # pointDiff != 1 ==> "Win"
+            else:
+                return "Win for " + currently_winning
