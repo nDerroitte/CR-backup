@@ -23,15 +23,14 @@ class TennisGame1:
                     1: "Fifteen-All",
                     2: "Thirty-All",
                 }[self.p1points]
-            else:
+            else: 
                 result = "Deuce"
         elif (self.p1points >= 4 or self.p2points >= 4):
-            minusResult = self.p1points - self.p2points
-            if (minusResult == 1):
+            if (self.p1points == self.p2points + 1):
                 result = "Advantage " + self.player1Name
-            elif (minusResult == -1):
+            elif (self.p2points == self.p1points + 1):
                 result = "Advantage " + self.player2Name
-            elif (minusResult >= 2):
+            elif (self.p1points > self.p2points + 1):
                 result = "Win for " + self.player1Name
             else:
                 result = "Win for " + self.player2Name
