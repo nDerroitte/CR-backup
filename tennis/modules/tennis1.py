@@ -22,15 +22,15 @@ class TennisGame1:
 
     def score(self):
         if (self.p1points==self.p2points):
-            p = ["Love-All", "Fifteen-All", "Thirty-All", "Deuce", "Deuce"]
-            result = p[self.p2points]
+            equal_points_list = ["Love-All", "Fifteen-All", "Thirty-All", "Deuce", "Deuce"]
+            result = equal_points_list[self.p2points]
         elif (self.p1points>=4 or self.p2points>=4):
             if (abs(self.p1points-self.p2points)==1): # if advantage
                 result ="Advantage " + self.who_won()
             else:
                 result ="Win for " + self.who_won()
         else:
-            p2 = ["Love", "Fifteen", "Thirty", "Forty"]
-            s = p2[self.p1points]
-            return s + "-All" if (self.p1points == self.p2points) else s + "-" + p2[self.p2points]
+            points_list = ["Love", "Fifteen", "Thirty", "Forty"]
+            s = points_list[self.p1points]
+            return s + "-All" if (self.p1points == self.p2points) else s + "-" + points_list[self.p2points]
         return result
