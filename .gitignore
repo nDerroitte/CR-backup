@@ -17,7 +17,7 @@
 .classpath
 
 target/
-__pycache__
+**/__pycache__/
 htmlcov
 venv
 .coverage
