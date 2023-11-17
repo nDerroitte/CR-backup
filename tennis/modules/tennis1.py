@@ -14,7 +14,7 @@ class TennisGame1:
         else:
             self.p2points += 1
 
-    def parity_scenarios(self):
+    def _parity_scenarios(self):
         if self.p1points < 3:
             result = {
                 0: "Love-All",
@@ -25,7 +25,7 @@ class TennisGame1:
             result = "Deuce"
         return result
 
-    def classic_scenario(self):
+    def _classic_scenario(self):
         conversion = {
             0: "Love",
             1: "Fifteen",
@@ -35,7 +35,7 @@ class TennisGame1:
         result = conversion[self.p1points] + "-" + conversion[self.p2points]
         return result
 
-    def advantage_and_victory_scenario(self):
+    def _advantage_and_victory_scenario(self):
         if (self.p1points == self.p2points + 1):
             result = "Advantage " + self.player1Name
         elif (self.p2points == self.p1points + 1):
@@ -49,9 +49,9 @@ class TennisGame1:
     def score(self):
         result = ""
         if (self.p1points == self.p2points):
-            result = self.parity_scenarios()
+            result = self._parity_scenarios()
         elif (self.p1points >= 4 or self.p2points >= 4):
-            result = self.advantage_and_victory_scenario()
+            result = self._advantage_and_victory_scenario()
         else:
-            result = self.classic_scenario()
+            result = self._classic_scenario()
         return result
