@@ -13,17 +13,13 @@ class TennisGame1:
             self.p1points += 1
         else:
             self.p2points += 1
-    
+
     def score(self):
         result = ""
-        # comment 2
         tempScore=0
         if (self.p1points==self.p2points):
-            result = {
-                0 : "Love-All",
-                1 : "Fifteen-All",
-                2 : "Thirty-All",
-            }.get(self.p1points, "Deuce")
+            p = ["Love-All", "Fifteen-All", "Thirty-All", "Deuce"]
+            result = p[self.p2points]
         elif (self.p1points>=4 or self.p2points>=4):
             minusResult = self.p1points-self.p2points
             if (minusResult==1):
