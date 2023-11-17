@@ -17,7 +17,7 @@ class GildedRose(object):
                     if item.name != "Sulfuras, Hand of Ragnaros":
                         item.quality = item.quality - 1
                         # Quality of Conjured Items decreases twice as fast
-                        if item.name.contains("Conjured"):
+                        if "Conjured" in item.name:
                             item.quality = item.quality - 1
                         
             else:
