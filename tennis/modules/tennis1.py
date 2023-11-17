@@ -13,6 +13,20 @@ class TennisGame1:
             self.p1points += 1
         else:
             self.p2points += 1
+
+    def winner(self):
+        if ((self.p1points>=4 or self.p2points>=4) and self.p1points-self.p2points == 1):
+            result =["A" , self.player1Name]
+        elif ((self.p1points>=4 or self.p2points>=4) and self.p1points-self.p2points == -1):
+            result =["A" , self.player2Name]
+        elif ((self.p1points>=4 or self.p2points>=4) and self.p1points-self.p2points >=2):
+            result = ["W" , self.player1Name]
+        elif (self.p1points>=4 or self.p2points>=4):
+            result =["W" , self.player2Name]
+        else:
+            result = ["N", '']
+        return result
+
     
     def score(self):
         result = ""
@@ -27,16 +41,13 @@ class TennisGame1:
             result = (result_list.get(self.p1points, "Deuce")).replace("Forty","Deuce")
             if result != "Deuce":
                 result = result +"-All"
-        elif ((self.p1points>=4 or self.p2points>=4) and self.p1points-self.p2points == 1):
-            result ="Advantage " + self.player1Name
-        elif ((self.p1points>=4 or self.p2points>=4) and self.p1points-self.p2points == -1):
-            result ="Advantage " + self.player2Name
-        elif ((self.p1points>=4 or self.p2points>=4) and self.p1points-self.p2points >=2):
-            result = "Win for " + self.player1Name
-        elif (self.p1points>=4 or self.p2points>=4):
-            result ="Win for " + self.player2Name
-        else:
-            tempScore = [self.p1points, self.p2points]
-            result1 = [result_list[i] for i in tempScore ]
-            result = '-'.join(map(str, result1))
+        else :
+            victory=self.winner()
+            match victory[0]:
+                case 'A':
+                    result = "Advantage " + victory[1]
+                case 'W':
+                    result = "Win for " + victory[1]
+                case 'N':
+                    result = result_list.get(self.p1points) +'-' + result_list.get(self.p2points)
         return result
