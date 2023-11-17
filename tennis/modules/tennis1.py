@@ -31,6 +31,5 @@ class TennisGame1:
                 result ="Win for " + self.who_won()
         else:
             points_list = ["Love", "Fifteen", "Thirty", "Forty"]
-            s = points_list[self.p1points]
-            return s + "-All" if (self.p1points == self.p2points) else s + "-" + points_list[self.p2points]
+            return points_list[self.p1points] + "-" + points_list[self.p2points]
         return result
