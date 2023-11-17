@@ -2,15 +2,24 @@
 
 class GildedRose(object):
 
+#Special Items
+#   Sulfuras: does never change
+#   Aged Brie: quality increases
+#   Backstage: if 6 <= sell_in < 11, quality increases by 1,
+#               if sell_in < 6, quality increases by 2
+#   Conjured: +2 for quality and sell
+#Note: maximum quality is 50
+
     def __init__(self, items):
         self.items = items
-
+    
     def update_quality(self):
         for item in self.items:
             if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
                 if item.quality > 0:
                     if item.name != "Sulfuras, Hand of Ragnaros":
                         item.quality = item.quality - 1
+
             else:
                 if item.quality < 50:
                     item.quality = item.quality + 1
