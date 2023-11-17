@@ -20,11 +20,6 @@ test_case = [
 
 
 class GildedRoseTest(unittest.TestCase):
-    def test_foo(self):
-        items = [Item("foo", 0, 0)]
-        gilded_rose = GildedRose(items)
-        gilded_rose.update_quality()
-        self.assertEquals("foo", items[0].name)
 
     def test_sulfuras(self):
         for item in test_case:
@@ -39,6 +34,19 @@ class GildedRoseTest(unittest.TestCase):
                 if item.name != "Sulfuras, Hand of Ragnaros":
                     self.assertLess(item.quality, 51)
                     self.assertGreaterEqual(item.quality, 0)
+
+    def test_quality_decrease(self):
+        gilded_rose = GildedRose(test_case)
+        for i in range(10):
+            gilded_rose.update_quality()
+            for item in gilded_rose.items:
+                if item.name == "Banana":
+                    print(item.name, item.quality)
+        for item in gilded_rose.items:
+            if item.name == "Banana":
+                self.assertEqual(item.quality, 36)
+            # elif item.name == "Aged Brie":
+            #     self.assertEqual(item.quality, 16)
 
 
 if __name__ == '__main__':
