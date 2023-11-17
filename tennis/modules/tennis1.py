@@ -16,23 +16,22 @@ class TennisGame1:
 
     def score(self):
         result = ""
-        tempScore = 0
         if (self.p1points == self.p2points):
             result = {
                 0: "Love-All",
                 1: "Fifteen-All",
                 2: "Thirty-All",
             }.get(self.p1points, "Deuce")
-        elif (self.p1points >= 4 and self.p1points > self.p2points + 1):
-            result = "Win for " + self.player1Name
-        elif (self.p2points >= 4 and self.p2points > self.p1points + 1):
-            result = "Win for " + self.player2Name
         elif (self.p1points >= 4 or self.p2points >= 4):
             minusResult = self.p1points - self.p2points
             if (minusResult == 1):
                 result = "Advantage " + self.player1Name
             elif (minusResult == -1):
                 result = "Advantage " + self.player2Name
+            elif (minusResult >= 2):
+                result = "Win for " + self.player1Name
+            else:
+                result = "Win for " + self.player2Name
         else:
             conversion = {
                 0: "Love",
