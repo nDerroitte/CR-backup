@@ -7,21 +7,19 @@ class GildedRose(object):
 
     def update_quality(self):
         for item in self.items:
+            # For Sulfuras, nothing changes
             if item.name != "Sulfuras, Hand of Ragnaros":            
                 # Aged Brie and Backstage passes update not in the same way as other things
                 if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
                     if item.quality > 0:
-                        # Quality of Sulfuras does not change
                         item.quality = item.quality - 1
                         # Quality of Conjured Items decreases twice as fast
                         if "Conjured" in item.name:
-                            item.quality = item.quality - 1
-                        
+                            item.quality = item.quality - 1     
                 else:
-                    # If quality is < 50, and we have Aged Brie or backstage passes, simple quality increase
+                    # For Aged Brie or backstage passes, simple quality increase
                     if item.quality < 50:
                         item.quality = item.quality + 1
-                    
                         # Special variation of quality depending on the sell_in value for passes
                         if item.name == "Backstage passes to a TAFKAL80ETC concert":
                             # Double increase if sell_in lower than 11
