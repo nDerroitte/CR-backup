@@ -19,17 +19,25 @@ we are now left in quite the mess ! Here's what he left
 
 ** About Item Quality **
 
-// TODO
+Item Quality decays over days, for each day the quality of an item will decrease of one unity. 
+
+However, there is an exception for items: "Aged Brie", "Backstage passes", and "Sulfuras items".
+
 
 ** Item quality to Sell-in relationship **
 
-// TODO
+While the sell-in can be a negative value and will continue decrease over days, the quality can't go below zero and will decrease each days until it reaches zero. 
+
+Also an item quality can't go above 50. Expected for the Sulfuras, 'Hand of Ragnaros' item.
 
 ** About specific item rules **
 
-- Sulfuras is legendary which means //TODO
+- Sulfuras is legendary which means that it sel_in value stays at its intital value, and the quality will always be equal to 80.
 - Aged Brie & Backstage passes do something special, although not the same thing
-// TODO
+
+- Aged Brie item: It's quality increases each day until it arrives at a cap of 50. 
+
+- Backstage passes item: It's quality will increase each day. When the sell_in date is within ten days, it's quality will increase of two each day. Until it reaches a cap of 50. 
 
 ```
 We have recently signed a supplier of conjured items. This requires an update to our system:
