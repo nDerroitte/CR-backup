@@ -4,6 +4,7 @@ import unittest
 
 from modules.tennis1 import TennisGame1
 from modules.tennis2 import TennisGame2
+from modules.tennis_gpt import TennisGameGPT
 
 test_cases = [
     (0, 0, "Love-All", 'player1', 'player2'),
@@ -75,6 +76,13 @@ class TestTennis(unittest.TestCase):
         for testcase in test_cases:
             (p1Points, p2Points, score, p1Name, p2Name) = testcase
             game = play_game(TennisGame2, p1Points, p2Points, p1Name, p2Name)
+            self.assertEqual(score, game.score())
+
+    # Unit test 3
+    def test_Score_Game3(self):
+        for testcase in test_cases:
+            (p1Points, p2Points, score, p1Name, p2Name) = testcase
+            game = play_game(TennisGameGPT, p1Points, p2Points, p1Name, p2Name)
             self.assertEqual(score, game.score())
  
 if __name__ == "__main__":
