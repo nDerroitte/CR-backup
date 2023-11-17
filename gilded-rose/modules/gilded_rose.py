@@ -59,6 +59,10 @@ class GildedRose(object):
                 else:
                     if item.quality < 50:
                         item.quality = item.quality + 1
+                        
+    def update_quality_multiple_day(self, n_days):
+        for i in range(n_days):
+            self.update_quality()
 
 
 class Item:
