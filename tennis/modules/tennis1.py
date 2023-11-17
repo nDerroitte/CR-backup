@@ -34,16 +34,13 @@ class TennisGame1:
             else:
                 result ="Win for " + self.player2Name
         else:
-            for i in range(1,3):
-                if (i==1):
-                    tempScore = self.p1points
-                else:
-                    result+="-"
-                    tempScore = self.p2points
-                result += {
+            tempScore = [self.p1points, self.p2points]
+            result_list= {
                     0 : "Love",
                     1 : "Fifteen",
                     2 : "Thirty",
                     3 : "Forty",
-                }[tempScore]
+                }
+            result1 = [result_list[i] for i in tempScore ]
+            result = '-'.join(map(str, result1))
         return result
