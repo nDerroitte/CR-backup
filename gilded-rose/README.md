@@ -1,4 +1,4 @@
-======================================
+$µ======================================
 Gilded Rose Requirements Specification
 ======================================
 
@@ -19,17 +19,25 @@ we are now left in quite the mess ! Here's what he left
 
 ** About Item Quality **
 
-// TODO
+The system currently handles item quality based on item type. For regular items, the quality decreases by 1 each day, and for special items like Aged Brie and Backstage Passes, the quality increases under specific conditions. Detailed documentation within the code specifies these rules.
+it can only be between 0 and 50 
 
 ** Item quality to Sell-in relationship **
-
-// TODO
+ -2 when sellin < 0 
+The relationship between item quality and remaining sell-in days is not explicitly documented. The code contains logic for adjusting item quality based on sell-in days, and this relationship should be thoroughly explained for clarity.
 
 ** About specific item rules **
 
-- Sulfuras is legendary which means //TODO
+- Sulfuras is legendary which means it does not follow the regular degradation rules it never change. 
 - Aged Brie & Backstage passes do something special, although not the same thing
-// TODO
+ Aged Brie's quality increases over time
+ +1 if sellin bigger than 0
+ +2 if sellin below 0
+ Backstage Passes have varying quality increases based on remaining sell-in days. Comprehensive documentation should be added to clarify these special behaviors.
+ +1 if sellin bigger than 11 
+ +2 if sellin is between 11 and 6
+ +3 if sellin is lower than 6
+ if sellin is negative quality is zero
 
 ```
 We have recently signed a supplier of conjured items. This requires an update to our system:
