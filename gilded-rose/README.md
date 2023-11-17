@@ -19,17 +19,24 @@ we are now left in quite the mess ! Here's what he left
 
 ** About Item Quality **
 
-// TODO
+- For the items different that Aged Brie, Backstage passes to TAFKAL80ETC concert and Sulfuras, the quality decreases by 1 every day
+- The maximum value of the Item Quality is 50, except for Sulfuras
 
 ** Item quality to Sell-in relationship **
 
-// TODO
+- As the Item Quality, the sell_in value decreases by one everyday, except for Sulfuras
+- If the sell_in value is negative, it results in an additional quality decrease everyday except for Aged Brie, Backstage passes to TAFKAL80ETC concert and Sulfuras
 
 ** About specific item rules **
 
-- Sulfuras is legendary which means //TODO
+- Sulfuras is legendary which means that the quality of this item is equal to 80 and never decreases
+- Sulfuras is legendary which means that the sell_in value never change
+
 - Aged Brie & Backstage passes do something special, although not the same thing
-// TODO
+- The quality of Aged Brie increases by 1 every day
+- A negative sell_in value for Aged Brie results to an additional quality increase of 1
+- The quality of Backstage passes to TAFKAL80ETC concert increases by 2 everyday if the sell_in value is lower than 11 but increases by 3 everyday of the sell_in value is lower than 6
+- A negative sell_in value for Backstage passes to a TAFKAL80ETC concert results in a quality of 0 for the item
 
 ```
 We have recently signed a supplier of conjured items. This requires an update to our system:
