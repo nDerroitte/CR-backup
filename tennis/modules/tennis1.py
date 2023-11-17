@@ -21,8 +21,6 @@ class TennisGame1:
             return self.player2Name
 
     def score(self):
-        result = ""
-        tempScore=0
         if (self.p1points==self.p2points):
             p = ["Love-All", "Fifteen-All", "Thirty-All", "Deuce", "Deuce"]
             result = p[self.p2points]
