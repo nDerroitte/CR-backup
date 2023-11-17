@@ -21,5 +21,5 @@ class TennisGame2:
             if (self.p1 == self.p2):
                 return "Deuce"
             s = self.p1N if self.p1 > self.p2 else self.p2N
-            pointDiff = self.p1-self.p2
-            return "Advantage " + s if (pow(pointDiff,2) == 1) else "Win for " + s
+            pointDiff = abs(self.p1-self.p2)
+            return "Advantage " + s if (pointDiff == 1) else "Win for " + s
