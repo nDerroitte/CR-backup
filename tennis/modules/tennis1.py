@@ -23,7 +23,7 @@ class TennisGame1:
                     1: "Fifteen-All",
                     2: "Thirty-All",
                 }[self.p1points]
-            else: 
+            else:
                 result = "Deuce"
         elif (self.p1points >= 4 or self.p2points >= 4):
             if (self.p1points == self.p2points + 1):
