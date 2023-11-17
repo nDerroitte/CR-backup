@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from modules.tennis1 import TennisGame1
+from modules.tennis2 import TennisGame2
 
 players = ["Nadal", "Federer"]
 
 if __name__ == "__main__":
     p1, p2 = players
-    game = TennisGame1(p1, p2)
+    game = TennisGame2(p1, p2)
     print("Start of the game.")
     print("---")
     # 0 - 0
@@ -23,8 +24,23 @@ if __name__ == "__main__":
     game.won_point(p1)
     print(game.score())
     # 15 - 40
+    game.won_point(p1)
+    print(game.score())
+    # 30 - 40
+    game.won_point(p1)
+    print(game.score())
+    # 40 - 40
     game.won_point(p2)
     print(game.score())
-    # Win P2
+    # Advantage P2
+    game.won_point(p1)
+    print(game.score())
+    # 40-40
+    game.won_point(p1)
+    print(game.score())
+    # Advantage P1
+    game.won_point(p1)
+    print(game.score())
+    # Won P1
     print("---")
 
