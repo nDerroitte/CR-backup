@@ -13,13 +13,18 @@ class TennisGame2:
         else:
             self.points_player2 += 1
     
+    
     def score(self):
-        if (self.points_player1 < 4 and self.points_player2 < 4) and (self.p1 + self.p2 < 6):
-            points = ["Love", "Fifteen", "Thirty", "Forty"]
-            score = points[self.points_player1]
-            return score + "-All" if (self.points_player1 == self.points_player2) else s + "-" + points[self.points_player2]
+        points = {0:"Love", 1:"Fifteen", 2:"Thirty", 3:"Forty"}
+        if (self.points_player1 < 4 and self.points_player2 < 4) and (self.points_player1 + self.points_player2 < 6):
+           score_player1 = points[self.points_player1]
+           score_player2 = points[self.points_player2]
+           if (self.points_player1 == self.points_player2):
+               return score_player1 + "-All"
+           else:
+               return score_player1 + "-" + score_player2
         else:
             if (self.points_player1 == self.points_player2):
                 return "Deuce"
             score = self.player1 if self.points_player1 > self.points_player2 else self.player2
-            return "Advantage " + score if ((self.p1-self.p2)*(self.p1-self.p2) == 1) else "Win for " + score
+            return "Advantage " + score if ((self.points_player1-self.points_player2)*(self.points_player1-self.points_player2) == 1) else "Win for " + score
