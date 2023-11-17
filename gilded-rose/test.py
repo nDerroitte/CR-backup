@@ -24,6 +24,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEquals(0, items[5].quality)
         self.assertEquals(3, items[0].quality)
         self.assertEquals(42, items[6].quality)
+        self.assertEquals("Coffee, -1, 3", items[0].__repr__())
 
 
 
