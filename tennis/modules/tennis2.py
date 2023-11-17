@@ -26,9 +26,12 @@ class TennisGame2:
         else:
             if (self.points_player1 == self.points_player2):
                 return "Deuce"
-            elif (self.points_player1-self.points_player2)*(self.points_player1-self.points_player2) == 1:
-                score = self.player1 if self.points_player1 > self.points_player2 else self.player2
-                return "Advantage " + score 
+            elif (self.points_player1 == self.points_player2+1):
+                return "Advantage " + self.player1
+            elif (self.points_player1+1 == self.points_player2):
+                return "Advantage " + self.player2
             else:
-                score = self.player1 if self.points_player1 > self.points_player2 else self.player2
-                return "Win for " + score
+                if self.points_player1 > self.points_player2:
+                    return "Win for " + self.player1
+                else:
+                    return "Win for " + self.player2
