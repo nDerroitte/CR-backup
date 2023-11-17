@@ -70,7 +70,7 @@ class GildedRoseTest(unittest.TestCase):
 
     def test_sell_in(self):
             items = [
-        Item(name="+5 Dexterity Vest", sell_in=8, quality=20),
+        Item(name="+5 Dexterity Vest", sell_in=9, quality=20),
         Item(name="+5 Dexterity Vest", sell_in=-1, quality=20),
         Item(name="Aged Brie", sell_in=2, quality=0),
         Item(name="Aged Brie", sell_in=2, quality=60),
