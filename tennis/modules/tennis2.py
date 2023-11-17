@@ -2,24 +2,24 @@
         
 class TennisGame2:
     def __init__(self, player1Name, player2Name):
-        self.p1N = player1Name
-        self.p2N = player2Name
-        self.p1 = 0
-        self.p2 = 0
+        self.player1 = player1Name
+        self.player2 = player2Name
+        self.points_player1 = 0
+        self.points_player2 = 0
         
-    def won_point(self, n):
-        if n == self.p1N:
-            self.p1 += 1
+    def won_point(self, playerName):
+        if playerName == self.player1:
+            self.points_player1 += 1
         else:
-            self.p2 += 1
+            self.points_player2 += 1
     
     def score(self):
-        if (self.p1 < 4 and self.p2 < 4) and (self.p1 + self.p2 < 6):
-            p = ["Love", "Fifteen", "Thirty", "Forty"]
-            s = p[self.p1]
-            return s + "-All" if (self.p1 == self.p2) else s + "-" + p[self.p2]
+        if (self.points_player1 < 4 and self.points_player2 < 4) and (self.p1 + self.p2 < 6):
+            points = ["Love", "Fifteen", "Thirty", "Forty"]
+            score = points[self.points_player1]
+            return score + "-All" if (self.points_player1 == self.points_player2) else s + "-" + points[self.points_player2]
         else:
-            if (self.p1 == self.p2):
+            if (self.points_player1 == self.points_player2):
                 return "Deuce"
-            s = self.p1N if self.p1 > self.p2 else self.p2N
-            return "Advantage " + s if ((self.p1-self.p2)*(self.p1-self.p2) == 1) else "Win for " + s
+            score = self.player1 if self.points_player1 > self.points_player2 else self.player2
+            return "Advantage " + score if ((self.p1-self.p2)*(self.p1-self.p2) == 1) else "Win for " + score
