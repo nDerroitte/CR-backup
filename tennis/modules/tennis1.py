@@ -34,16 +34,11 @@ class TennisGame1:
             elif (minusResult == -1):
                 result = "Advantage " + self.player2Name
         else:
-            for i in range(1, 3):
-                if (i == 1):
-                    tempScore = self.p1points
-                else:
-                    result += "-"
-                    tempScore = self.p2points
-                result += {
-                    0: "Love",
-                    1: "Fifteen",
-                    2: "Thirty",
-                    3: "Forty",
-                }[tempScore]
+            conversion = {
+                0: "Love",
+                1: "Fifteen",
+                2: "Thirty",
+                3: "Forty",
+            }
+            result = conversion[self.p1points] + "-" + conversion[self.p2points]
         return result
