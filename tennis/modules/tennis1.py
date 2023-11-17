@@ -22,8 +22,7 @@ class TennisGame1:
                 0: "Love-All",
                 1: "Fifteen-All",
                 2: "Thirty-All",
-                3: "Deuce",
-                4: "Deuce"}
+            }.get(self.p1points, "Deuce")
         elif (self.p1points >= 4 or self.p2points >= 4):
             minusResult = self.p1points - self.p2points
             if (minusResult == 1):
