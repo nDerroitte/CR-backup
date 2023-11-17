@@ -1,7 +1,7 @@
 # Code Refactoring
 
 Goal of the training : This training aims to equip participants with essential refactoring techniques. By the end of the program, participants will be more confortable in enhancing code readability and organization.
-
+ 
 ## Prerequisites 
 
 * Ensure Python is installed on your laptop. You can use Miniconda in user mode for installation.
