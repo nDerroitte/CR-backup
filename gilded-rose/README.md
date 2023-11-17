@@ -27,9 +27,10 @@ The item quality degrades by 1 point for every day that they are approaching the
 
 ** About specific item rules **
 
-- Sulfuras is legendary which means that the quality is 80 and it never alters.
+- Sulfuras is legendary which means that the quality is 80 and it never alters. The sell-in attribute also does not change.
 - Aged Brie & Backstage passes do something special, although not the same thing
-When the quality of Aged Brie is below 50, the quality increases for every day that they are approaching the sell-in date. For backstage passes, if the item quality is below 50 and the sell-in date is within 11 days, it increases the quality by 2. If it is within 6 days, it increases by 3.
+When the quality of Aged Brie is below 50, the quality increases for every day that they are approaching the sell-in date. The maximum quality is 50. 
+ For backstage passes, if the item quality is below 50 and the sell-in date is within 10 days, it increases the quality by one more. If it is within 5 days, it increases again by 1, so in total with 3.
 
 ```
 We have recently signed a supplier of conjured items. This requires an update to our system:
