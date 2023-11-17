@@ -19,11 +19,16 @@ we are now left in quite the mess ! Here's what he left
 
 ** About Item Quality **
 
-// TODO
+Quality:
+
+Sulfares never changes
+
 
 ** Item quality to Sell-in relationship **
+Tafkal quality +1 if Sellin >= 11
+				+2 if sellin < 11
+				+3 if selling < 6
 
-// TODO
 
 ** About specific item rules **
 
