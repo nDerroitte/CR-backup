@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-class TennisGame2:
+class TennisGame:
     scoremax =4
     deuceValue=6
     def __init__(self, player1Name, player2Name):
@@ -22,14 +21,5 @@ class TennisGame2:
         else:
             if (self.p1Score == self.p2Score):
                 return "Deuce"
-            return self.scoreadv_final()
-
-    def scoreadv_final(self):
-        if self.p1Score > self.p2Score:
-            if self.p1Score-self.p2Score>1:
-                return "Win for " + self.p1Name
-            return "Advantage " + self.p1Name
-        else:
-            if self.p2Score - self.p1Score > 1:
-                return "Win for " + self.p2Name
-            return "Advantage " + self.p2Name
+            scoreLeader = self.p1Name if self.p1Score > self.p2Score else self.p2Name
+            return "Advantage " + scoreLeader if ((self.p1Score-self.p2Score)*(self.p1Score-self.p2Score) == 1) else "Win for " + scoreLeader
