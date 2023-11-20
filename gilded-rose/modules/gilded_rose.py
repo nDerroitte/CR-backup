@@ -10,22 +10,14 @@ class GildedRose(object):
             if item.name.startswith("Conjured"):
                 conjured_item = ConjuredItem(item.name, item.sell_in, item.quality)
                 conjured_item.update_quality(item)
-
-            # Quality
-            # Sulfuras
+            elif item.name == "Aged Brie": 
+                AgedBrie(item.name, item.sell_in, item.quality).update_quality(item)
+            elif item.name == "Backstage passes to a TAFKAL80ETC concert": 
+                BackstagePass(item.name, item.sell_in, item.quality).update_quality(item)
             elif item.name == "Sulfuras, Hand of Ragnaros":
-                item.quality += 0
-            # Other products
-            elif item.name not in ["Aged Brie", "Backstage passes to a TAFKAL80ETC concert", "Conjured Apple"] and item.quality > 0:
-                item.quality -= 1
-            else: # Brie and backstage passes
-                if item.quality < 50:
-                    item.quality = item.quality + 1
-                    if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                        BackstagePass(item.name, item.sell_in, item.quality).update_quality(item)
-            # Decrease sell-in by -1 for every item except Sulfuras
-            if item.name != "Sulfuras, Hand of Ragnaros":
-                item.sell_in -= 1
+                pass
+            else:
+                NormalItem(item.name, item.sell_in, item.quality).update_quality(item)
 
             # if products past their sell in date    
             if item.sell_in < 0:
@@ -49,10 +41,24 @@ class Item:
     
 class BackstagePass(Item):
     def update_quality(self, item):
+        item.sell_in -= 1
+        if item.quality < 50:
+            item.quality += 1
         if item.sell_in < 11 and item.quality < 50:
             item.quality += 1
         if item.sell_in < 6 and item.quality < 50:
             item.quality += 1
+
+class AgedBrie(Item):
+    def update_quality(self, item):
+        item.sell_in -= 1
+        if item.quality < 50:
+            item.quality += 1
+
+class NormalItem(Item):
+    def update_quality(self, item):
+        item.sell_in -= 1
+        item.quality -= 1
 
 class ConjuredItem(Item):
     def __init__(self, name, sell_in, quality):
