@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from modules.gilded_rose import Item, GildedRose, ItemFactory
+from modules.gilded_rose import Item, GildedRose, ItemFactory, AgedBrie, Sulfuras, BackstagePass, OtherItem, ConjuredItem
 
 
 test_cases_one_day = {
@@ -39,25 +39,21 @@ class GildedRoseTest(unittest.TestCase):
     
     # Unit Test 1
     def test_quality_day_one(self):
-
-        factory = ItemFactory()
-        for i, elm in enumerate(test_cases_one_day["it"]):
-            it = factory.new_Item(elm.name, elm.sell_in, elm.quality)
-            it.update_quality()
-            
-            self.assertEquals(test_cases_one_day["expect_qual"][i], it.quality)
-            self.assertEquals(test_cases_one_day["expect_sellin"][i], it.sell_in)
+        
+        elements = GildedRose(test_cases_one_day["it"])
+        elements.update_quality()
+        for j, elm in enumerate(elements.items):
+            self.assertEqual(test_cases_one_day["expect_qual"][j], elm.quality)
+            self.assertEqual(test_cases_one_day["expect_sellin"][j], elm.sell_in)
             
     # Unit Test 2
     def test_quality_week_one(self):
         
-        factory = ItemFactory()
-        for i, elm in enumerate(test_cases_one_week["it"]):
-            it = factory.new_Item(elm.name, elm.sell_in, elm.quality)
-            it.update_quality_multiple_day(7)
-            
-            self.assertEquals(test_cases_one_week["expect_qual"][i], it.quality)
-            self.assertEquals(test_cases_one_week["expect_sellin"][i], it.sell_in)
+        elements = GildedRose(test_cases_one_week["it"])
+        elements.update_quality_multiple_day(7)
+        for j, elm in enumerate(elements.items):
+            self.assertEqual(test_cases_one_week["expect_qual"][j], elm.quality)
+            self.assertEqual(test_cases_one_week["expect_sellin"][j], elm.sell_in)
         
 
 if __name__ == '__main__':

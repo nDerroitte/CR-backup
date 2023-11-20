@@ -1,23 +1,27 @@
 # -*- coding: utf-8 -*-
 
 class ItemFactory:
-    def new_Item(self, name, sell_in, quality):
-        if name == "Aged Brie":
-            return AgedBrie(name, sell_in, quality)
-        elif name == "Backstage passes to a TAFKAL80ETC concert":
-            return BackstagePass(name, sell_in, quality)
-        elif name == "Sulfuras, Hand of Ragnaros":
-            return Sulfuras(name, sell_in, quality)
-        elif "Conjured" in name:
-            return ConjuredItem(name, sell_in, quality)
+    def new_Item(self, item):
+        if item.name == "Aged Brie":
+            return AgedBrie(item.name, item.sell_in, item.quality)
+        elif item.name == "Backstage passes to a TAFKAL80ETC concert":
+            return BackstagePass(item.name, item.sell_in, item.quality)
+        elif item.name == "Sulfuras, Hand of Ragnaros":
+            return Sulfuras(item.name, item.sell_in, item.quality)
+        elif "Conjured" in item.name:
+            return ConjuredItem(item.name, item.sell_in, item.quality)
         else:
-            return OtherItem(name, sell_in, quality)
+            return OtherItem(item.name, item.sell_in, item.quality)
         
         
 class GildedRose(object):
-
     def __init__(self, items):
-        self.items = items
+        factory = ItemFactory()
+        self.items = [factory.new_Item(item) for item in items]
+        # Use the factory directly when calling the class to obtain the good objects
+        # factory = ItemFactory()
+        # for i, item in enumerate(self.items):
+        #     self.items[i] = factory.new_Item(item.name, item.sell_in, item.quality)
          
     def update_quality(self):
         for item in self.items:
@@ -25,7 +29,7 @@ class GildedRose(object):
             
     def update_quality_multiple_day(self, n_days):
         for item in self.items:
-            for i in range(n_days):
+            for _ in range(n_days):
                 item.update_quality()
             
 class Item:
