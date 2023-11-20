@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from modules.gilded_rose import Item, GildedRose
+from modules.gilded_rose import GildedRose
+from modules.item import Item
 
 
 def get_test_case():

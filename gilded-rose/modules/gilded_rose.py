@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+from modules.aged_brie import AgedBrie
+from modules.backstage_passes import BackstagePasses
+from modules.plain_object import PlainObject
+from modules.sulfuras import Sulfuras
+from modules.conjured import Conjured
 
 
 class GildedRose(object):
@@ -25,59 +30,3 @@ class ObjectFactory:
             return Conjured(name, sell_in, quality)
         else:
             return PlainObject(name, sell_in, quality)
-
-
-class Item:
-    def __init__(self, name, sell_in, quality):
-        self.name = name
-        self.sell_in = sell_in
-        self.quality = quality
-
-    def __repr__(self):
-        return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
-
-
-class AgedBrie(Item):
-    def update_quality(self):
-        self.sell_in -= 1
-        if self.sell_in >= 0:
-            self.quality = min(self.quality + 1, 50)
-        elif self.sell_in < 0:
-            self.quality = min(self.quality + 2, 50)
-
-
-class BackstagePasses(Item):
-    def update_quality(self):
-        self.sell_in += - 1
-        if self.sell_in >= 10:
-            self.quality = min(self.quality + 1, 50)
-        elif 5 <= self.sell_in < 10:
-            self.quality = min(self.quality + 2, 50)
-        elif -1 < self.sell_in < 5:
-            self.quality = min(self.quality + 3, 50)
-        elif self.sell_in < 0:
-            self.quality = 0
-
-
-class PlainObject(Item):
-    def update_quality(self):
-        self.quality = max(self.quality - 1, 0)
-        self.sell_in -= 1
-        if self.sell_in < 0:
-            if self.quality > 0:
-                self.quality -= 1
-
-
-class Sulfuras(Item):
-    def update_quality(self):
-        self.quality = self.quality
-        self.sell_in = self.sell_in
-
-
-class Conjured(Item):
-    def update_quality(self):
-        self.quality = max(self.quality - 1, 0)
-        self.sell_in -= 2
-        if self.sell_in < 0:
-            if self.quality > 0:
-                self.quality = max(self.quality - 2, 0)
