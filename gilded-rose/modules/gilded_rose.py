@@ -18,19 +18,6 @@ class GildedRose(object):
 
     def __init__(self, items):
         self.items = items
-        
-    def behavior(self):
-       for ind, item in enumerate(self.items):
-            if item.name == "Aged Brie":
-                self.items[ind] = AgedBrie(item.name, item.sell_in, item.quality)
-            elif item.name == "Backstage passes to a TAFKAL80ETC concert":
-                self.items[ind] = BackstagePass(item.name, item.sell_in, item.quality)
-            elif item.name == "Sulfuras, Hand of Ragnaros":
-                self.items[ind] = Sulfuras(item.name, item.sell_in, item.quality)
-            elif "Conjured" in item.name:
-                self.items[ind] = ConjuredItem(item.name, item.sell_in, item.quality)
-            else:
-                self.items[ind] = OtherItem(item.name, item.sell_in, item.quality)
          
     def update_quality(self):
         for item in self.items:
