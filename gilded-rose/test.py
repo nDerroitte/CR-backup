@@ -18,6 +18,7 @@ test_cases = [
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=40),
         Item(name="Conjured Mana Cake", sell_in=3, quality=6), 
+        Item(name="Conjured Mana Cake", sell_in=-1, quality=6),
         Item(name="Elixir of the Mongoose", sell_in=-4, quality=4),
     ]
 
@@ -38,7 +39,8 @@ class GildedRoseTest(unittest.TestCase):
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49),
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=40),
-        Item(name="Conjured Mana Cake", sell_in=3, quality=6), 
+        Item(name="Conjured Mana Cake", sell_in=3, quality=6),
+        Item(name="Conjured Mana Cake", sell_in=-1, quality=6), 
         Item(name="Elixir of the Mongoose", sell_in=-1, quality=4),
     ]
         
@@ -60,7 +62,8 @@ class GildedRoseTest(unittest.TestCase):
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=50),
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=50),
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=43),
-        Item(name="Conjured Mana Cake", sell_in=3, quality=5), 
+        Item(name="Conjured Mana Cake", sell_in=3, quality=4), 
+        Item(name="Conjured Mana Cake", sell_in=-2, quality=2),
         Item(name="Elixir of the Mongoose", sell_in=-1, quality=2),
     ]
         gilded_rose = GildedRose(test_cases)
@@ -84,9 +87,11 @@ class GildedRoseTest(unittest.TestCase):
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=4, quality=49),
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=4, quality=40),
         Item(name="Conjured Mana Cake", sell_in=2, quality=6), 
+        Item(name="Conjured Mana Cake", sell_in=-2, quality=2),
         Item(name="Elixir of the Mongoose", sell_in=-5, quality=4)
         ]
             gilded_rose = GildedRose(test_cases)
+            gilded_rose.update_quality()
             for (idx, item )  in enumerate(  gilded_rose.items ) :
                 self.assertEqual(item.sell_in, items[idx].sell_in)
 
