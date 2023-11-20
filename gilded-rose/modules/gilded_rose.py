@@ -12,10 +12,10 @@ class GildedRose(object):
         for item in self.items:
             if item.name == "Aged Brie":
                 item.sell_in = item.sell_in - 1
-                if item.quality < 50 and item.sell_in >= 0:
-                    item.quality = item.quality + 1
-                elif item.quality < 49 and item.sell_in < 0:
-                    item.quality = item.quality + 2
+                if item.sell_in >= 0:
+                    item.quality = min(item.quality + 1, 50)
+                elif item.sell_in < 0:
+                    item.quality = min(item.quality + 2, 50)
 
     def _backstage_passes(self):
         for item in self.items:
