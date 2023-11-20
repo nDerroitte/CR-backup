@@ -70,7 +70,6 @@ class TypeFactory:
             tf = Sulfuras(item.name, item.sell_in, item.quality)
         else:
             tf = General(item.name, item.sell_in, item.quality)
-        
         return tf 
 
         
