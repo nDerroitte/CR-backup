@@ -8,6 +8,8 @@ class ItemFactory:
             return BackstagePass(name, sell_in, quality)
         elif name == "Sulfuras, Hand of Ragnaros":
             return Sulfuras(name, sell_in, quality)
+        elif "Conjured" in name:
+            return ConjuredItem(name, sell_in, quality)
         else:
             return OtherItem(name, sell_in, quality)
         
@@ -25,6 +27,8 @@ class GildedRose(object):
                 self.items[ind] = BackstagePass(item.name, item.sell_in, item.quality)
             elif item.name == "Sulfuras, Hand of Ragnaros":
                 self.items[ind] = Sulfuras(item.name, item.sell_in, item.quality)
+            elif "Conjured" in item.name:
+                self.items[ind] = ConjuredItem(item.name, item.sell_in, item.quality)
             else:
                 self.items[ind] = OtherItem(item.name, item.sell_in, item.quality)
          
@@ -81,6 +85,13 @@ class BackstagePass(Item):
     def update_quality_multiple_day(self, n_days):
         for i in range(n_days):
             self.update_quality()
+            
+class ConjuredItem(Item):
+    def update_quality(self):
+        if self.quality > 0:
+            self.quality -= 2
+            
+        self.sell_in -= 1
               
 class OtherItem(Item):
     def update_quality(self):
