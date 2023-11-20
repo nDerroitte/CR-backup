@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from modules.gilded_rose import Item, GildedRose
+from modules.gilded_rose import Item, ConjuredItem, GildedRose
 
 class GildedRoseTest(unittest.TestCase):
     def test_foo(self):
@@ -13,12 +13,13 @@ class GildedRoseTest(unittest.TestCase):
                  Item("Backstage passes to a TAFKAL80ETC concert", 2, 48),
                  Item("Aged Brie", -1, 40),
                  Item("Sulfuras, Hand of Ragnaros", 4, 30),
-
+                 ConjuredItem("Conjured Apple", 9, 20)
 ]
         gilded_rose = GildedRose(items)
         self.assertEquals(4, items[1].sell_in)
         self.assertEquals(35, items[2].quality)
         gilded_rose.update_quality()
+        self.assertEquals(18, items[8].quality)
         self.assertEquals("Coffee", items[0].name)
         self.assertEquals("Sulfuras, Hand of Ragnaros", items[1].name)
         self.assertEquals(80, items[1].quality)
