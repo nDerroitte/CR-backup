@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from modules.gilded_rose import Item, GildedRose
+from modules.gilded_rose import  GildedRose
+from modules.item import Item
 
 
 
@@ -19,6 +20,7 @@ items_dict = {
 "expected_quality" : [5,4,4,4,0,8,7,6,7,6],
 "expected_dayin" : [5,4,4,4,-6,4,9,14,-6,4]
 }
+
 
 class GildedRoseTest(unittest.TestCase):
     def test_one_day(self):

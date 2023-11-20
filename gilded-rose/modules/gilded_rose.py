@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from modules.tafkal import Tafkal
 
 class GildedRose(object):
 
@@ -21,14 +22,16 @@ class GildedRose(object):
                     # Brie +1
                     #TAFKAL +1
                     if item.name == "TAFKAL":
-                        if item.sell_in < 11:
-                            if item.quality < 50:
-                                item.quality = item.quality + 1
-                                #TAFKAL +1
-                        if item.sell_in < 6:
-                            if item.quality < 50:
-                                item.quality = item.quality + 1
-                                #TAFKAL +1
+                        tafkal = Tafkal(name =  item.name, sell_in = item.sell_in, quality = item.quality)
+                        item.quality= tafkal.tafkal_update_quality(item.name, item.sell_in, item.quality)
+                        # if item.sell_in < 11:
+                        #     if item.quality < 50:
+                        #         item.quality = item.quality + 1
+                        #         #TAFKAL +1
+                        # if item.sell_in < 6:
+                        #     if item.quality < 50:
+                        #         item.quality = item.quality + 1
+                        #         #TAFKAL +1
             if item.name != "Sulfuras":
                 item.sell_in = item.sell_in - 1
                 # Dexterity: -1
@@ -55,11 +58,4 @@ class GildedRose(object):
                         item.quality = item.quality + 1
 
 
-class Item:
-    def __init__(self, name, sell_in, quality):
-        self.name = name
-        self.sell_in = sell_in
-        self.quality = quality
 
-    def __repr__(self):
-        return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
