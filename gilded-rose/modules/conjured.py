@@ -1,10 +1,8 @@
-from modules.item import Item
+from modules.plain_object import PlainObject
 
 
-class Conjured(Item):
+class Conjured(PlainObject):
     def update_quality(self):
-        self.quality = max(self.quality - 1, 0)
-        self.sell_in -= 2
-        if self.sell_in < 0:
-            if self.quality > 0:
-                self.quality = max(self.quality - 2, 0)
+        super().update_quality()
+        super().update_quality()
+        self.sell_in += 1

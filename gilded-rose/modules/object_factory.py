@@ -9,11 +9,11 @@ class ObjectFactory:
     def create_object(name: str, sell_in: int, quality: int):
         if name == "Aged Brie":
             return AgedBrie(name, sell_in, quality)
-        elif name == "Backstage passes to a TAFKAL80ETC concert":
+        elif "backstage passes" in name.lower():
             return BackstagePasses(name, sell_in, quality)
         elif name == "Sulfuras, Hand of Ragnaros":
             return Sulfuras(name, sell_in, quality)
-        elif name == "Conjured":
+        elif "conjured" in name.lower():
             return Conjured(name, sell_in, quality)
         else:
             return PlainObject(name, sell_in, quality)

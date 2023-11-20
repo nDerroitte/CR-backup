@@ -70,7 +70,7 @@ class GildedRoseTest(unittest.TestCase):
             gilded_rose.update_quality()
         for item in gilded_rose.items:
             if item.name == "Conjured":
-                self.assertEqual(item.quality, 10)
+                self.assertEqual(item.quality, 5)
 
 
 if __name__ == '__main__':

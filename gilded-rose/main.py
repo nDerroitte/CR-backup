@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
-from modules.gilded_rose import GildedRose, Item
+from modules.gilded_rose import GildedRose
+from modules.item import Item
 
 if __name__ == "__main__":
     items = [
