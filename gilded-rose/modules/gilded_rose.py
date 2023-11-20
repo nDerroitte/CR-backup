@@ -25,18 +25,17 @@ class GildedRose(object):
             # Decrease sell-in by -1 for every item except Sulfuras
             if item.name != "Sulfuras, Hand of Ragnaros":
                 item.sell_in -= 1
-            # if products past their sell in date8    
+
+            # if products past their sell in date    
             if item.sell_in < 0:
-                if item.name != "Aged Brie":
-                    if item.name != "Backstage passes to a TAFKAL80ETC concert":
+                if item.name == "Aged Brie" and item.quality < 50:
+                    item.quality += 1
+                else:
+                    if item.name == "Backstage passes to a TAFKAL80ETC concert":
+                        item.quality = item.quality - item.quality
+                    else:
                         if item.quality > 0 and item.name != "Sulfuras, Hand of Ragnaros":
                             item.quality -= 1
-                    else:
-                        item.quality = item.quality - item.quality
-                else:
-                    if item.quality < 50:
-                        item.quality += 1
-
 
 class Item:
     def __init__(self, name, sell_in, quality):
