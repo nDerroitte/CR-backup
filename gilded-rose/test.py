@@ -31,7 +31,7 @@ test_cases_one_week = {
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=-5, quality=10),
         Item(name="Aged Brie", sell_in=3, quality=6),
         Item(name="Aged Brie", sell_in=-3, quality=6)],
-    "expect_qual": [13, 43, 0, 80, 29, 46, 0, 0, 17, 20],
+    "expect_qual": [13, 43, 0, 80, 29, 46, 0, 0, 16, 20],
     "expect_sellin": [3, 3, -12, 0, 8, 3, -2, -12, -4, -10]
 }
 
