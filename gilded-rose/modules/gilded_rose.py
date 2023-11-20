@@ -36,7 +36,8 @@ class GildedRose(object):
     def update_quality(self):
         for item in self.items:
             if item.name == "Aged Brie":
-                self._aged_brie(item)
+                AgedBrie(item.name, item.sell_in, item.quality) \
+                    .update_quality(item)
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 self._backstage_passes(item)
             elif item.name not in exception_objects:
@@ -51,3 +52,14 @@ class Item:
 
     def __repr__(self):
         return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
+
+
+class AgedBrie(Item):
+    def update_quality(self, item):
+        item.sell_in -= 1
+        if item.sell_in >= 0:
+            item.quality = min(item.quality + 1, 50)
+        elif item.sell_in < 0:
+            item.quality = min(item.quality + 2, 50)
+
+
