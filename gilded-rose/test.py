@@ -14,9 +14,10 @@ test_cases_one_day = {
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=10),
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=-5, quality=10),
         Item(name="Aged Brie", sell_in=3, quality=6),
-        Item(name="Aged Brie", sell_in=-3, quality=6)],
-    "expect_qual": [19, 49, 5, 80, 21, 32, 13, 0, 7, 8],
-    "expect_sellin": [9, 9, -6, 0, 14, 9, 4, -6, 2, -4]
+        Item(name="Aged Brie", sell_in=-3, quality=6),
+        Item(name="Conjured item", sell_in=15, quality=8)],
+    "expect_qual": [19, 49, 5, 80, 21, 32, 13, 0, 7, 8, 6],
+    "expect_sellin": [9, 9, -6, 0, 14, 9, 4, -6, 2, -4, 14]
 }
 
 test_cases_one_week = {
