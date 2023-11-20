@@ -13,8 +13,7 @@ class GildedRoseTest(unittest.TestCase):
                  Item("Backstage passes to a TAFKAL80ETC concert", 2, 48),
                  Item("Aged Brie", -1, 40),
                  Item("Sulfuras, Hand of Ragnaros", 4, 30),
-                 ConjuredItem("Conjured Apple", 9, 20)
-]
+                 Item("Conjured Apple", 9, 20),]
         gilded_rose = GildedRose(items)
         self.assertEquals(4, items[1].sell_in)
         self.assertEquals(35, items[2].quality)
@@ -47,3 +46,4 @@ class GildedRoseTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    
