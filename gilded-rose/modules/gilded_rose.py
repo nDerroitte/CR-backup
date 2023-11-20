@@ -8,20 +8,20 @@ class GildedRose(object):
     def update_quality(self):
         for item in self.items:
             # Quality
+            # Sulfuras
             if item.name == "Sulfuras, Hand of Ragnaros":
                 item.quality += 0
+            # Other products
             elif item.name not in ["Aged Brie", "Backstage passes to a TAFKAL80ETC concert"] and item.quality > 0:
                 item.quality -= 1
-            else:
+            else: # Brie and backstage passes
                 if item.quality < 50:
                     item.quality = item.quality + 1
                     if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                        if item.sell_in < 11:
-                            if item.quality < 50:
-                                item.quality += 1
-                        if item.sell_in < 6:
-                            if item.quality < 50:
-                                item.quality += 1
+                        if item.sell_in < 11 and item.quality < 50:
+                            item.quality += 1
+                        if item.sell_in < 6 and item.quality < 50:
+                            item.quality += 1
             # Decrease sell-in by -1 for every item except Sulfuras
             if item.name != "Sulfuras, Hand of Ragnaros":
                 item.sell_in -= 1
