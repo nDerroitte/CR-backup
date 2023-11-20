@@ -21,14 +21,18 @@ we are now left in quite the mess ! Here's what he left
 
 Quality:
 
-Sulfares never changes
-
+1.Cake quality -1 and sellin -1 per day
+2. elixir -1 and sellin -1 per day
+3.dexterity -1 and sellin -1 per day
 
 ** Item quality to Sell-in relationship **
-Tafkal quality +1 if Sellin >= 11
-				+2 if sellin < 11
-				+3 if selling < 6
-
+4.afkal quality = 0 if sellin <= 0
+5.				+1 if Sellin >= 11
+6.				+2 if sellin < 11
+7.				+3 if selling < 6
+8. Brie if sellin > 0 +2
+9.		sellin < 0 +1
+10. Sulfares never changes
 
 ** About specific item rules **
 

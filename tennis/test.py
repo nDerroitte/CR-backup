@@ -70,7 +70,7 @@ class TestTennis(unittest.TestCase):
             game = play_game(TennisGame1, p1Points, p2Points, p1Name, p2Name)
             self.assertEqual(score, game.score())
     
-    # Unit test 2
+
     def test_Score_Game2(self):
         for testcase in test_cases:
             (p1Points, p2Points, score, p1Name, p2Name) = testcase
