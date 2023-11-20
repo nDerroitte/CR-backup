@@ -15,12 +15,17 @@ if __name__ == "__main__":
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
         Item(name="Conjured Mana Cake", sell_in=3, quality=6), 
     ]
+    ex =General(name="+5 Dexterity Vest", sell_in=10, quality=20)
+    ex.update_quality()
+    print(ex.quality)
+
 
     days = 2
     for day in range(days):
         print("-------- day %s --------" % day)
         print("name, sellIn, quality")
+        GildedRose(items).update_quality()
         for item in items:
             print(item)
         print("")
-        GildedRose(items).update_quality()
+

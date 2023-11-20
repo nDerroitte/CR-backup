@@ -5,63 +5,18 @@ class GildedRose(object):
     def __init__(self, items):
         self.items = items
 
+
     def update_quality(self):
+        factory = TypeFactory()
+
         for item in self.items:
-            if item.quality<= 50:
-                if item.name != "Sulfuras, Hand of Ragnaros":
-                    item.sell_in = item.sell_in - 1
-                    
-                if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert" and item.name != "Sulfuras, Hand of Ragnaros":
-                    if item.sell_in >= 0:
-                        item.quality = item.quality - 1
-                    else:
-                        item.quality = item.quality - 2
-                
-                elif item.name == "Aged Brie":
-                    if item.sell_in >= 0:
-                        item.quality = item.quality + 1
-                    else:
-                        item.quality = item.quality + 2
-                
-                elif item.name == "Backstage passes to a TAFKAL80ETC concert":
-                    if item.quality <=47 and item.sell_in < 6:
-                        item.quality = item.quality + 3
-                    elif item.quality <=48 and item.sell_in < 11:
-                        item.quality = item.quality + 2
-                    elif item.quality < 50:
-                        item.quality = item.quality + 1
-                    
-        # for item in self.items:
-        #     if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
-        #         if item.quality > 0:
-        #             if item.name != "Sulfuras, Hand of Ragnaros":
-        #                 item.quality = item.quality - 1
-        #     else:
-        #         if item.quality < 50:
-        #             item.quality = item.quality + 1
-        #             if item.name == "Backstage passes to a TAFKAL80ETC concert":
-        #                 if item.sell_in < 11:
-        #                     if item.quality < 50:
-        #                         item.quality = item.quality + 1
-        #                 if item.sell_in < 6:
-        #                     if item.quality < 50:
-        #                         item.quality = item.quality + 1
-        #     if item.name != "Sulfuras, Hand of Ragnaros":
-        #         item.sell_in = item.sell_in - 1
-        #     if item.sell_in < 0:
-        #         if item.name != "Aged Brie":
-        #             if item.name != "Backstage passes to a TAFKAL80ETC concert":
-        #                 if item.quality > 0:
-        #                     if item.name != "Sulfuras, Hand of Ragnaros":
-        #                         item.quality = item.quality - 1
-        #             else:
-        #                 item.quality = item.quality - item.quality
-        #         else:
-        #             if item.quality < 50:
-        #                 item.quality = item.quality + 1
-
-
-class Item:
+            element = factory.create_item(item) 
+            element.update_quality() 
+            item.quality  = element.quality
+            item.sell_in = element.sell_in
+            
+            
+class Item():
     def __init__(self, name, sell_in, quality):
         self.name = name
         self.sell_in = sell_in
@@ -69,3 +24,53 @@ class Item:
 
     def __repr__(self):
         return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
+
+class General(Item):
+    def update_quality(self):
+        if self.quality<= 50:
+            if self.sell_in >= 0:
+                self.quality = self.quality - 1
+            else:
+                self.quality = self.quality - 2
+            self.sell_in = self.sell_in - 1
+    
+class Brie(Item):
+    def update_quality(self):
+        if self.quality<= 50:
+            if self.sell_in >= 0:
+                self.quality = self.quality + 1
+            else:
+                self.quality = self.quality + 2
+            
+            self.sell_in = self.sell_in - 1
+
+class Backstage(Item):
+    def update_quality(self):
+        if self.quality<= 50:
+            if self.quality <=47 and self.sell_in < 6:
+                self.quality = self.quality + 3
+            elif self.quality <=48 and self.sell_in < 11:
+                self.quality = self.quality + 2
+            elif self.quality < 50:
+                self.quality = self.quality + 1
+            self.sell_in = self.sell_in - 1
+
+class Sulfuras(Item):
+    def update_quality(self):
+        self.quality= self.quality
+        self.sell_in= self.sell_in
+
+class TypeFactory:
+    def create_item(self, item):
+        if item.name.find('Brie')  !=-1:
+            tf = Brie(item.name, item.sell_in, item.quality)
+        elif item.name.find('Backstage') !=-1:
+            tf = Backstage(item.name, item.sell_in, item.quality)
+        elif  item.name.find('Sulfuras') !=-1:
+            tf = Sulfuras(item.name, item.sell_in, item.quality)
+        else:
+            tf = General(item.name, item.sell_in, item.quality)
+        
+        return tf 
+
+        
