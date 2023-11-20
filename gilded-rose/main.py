@@ -2,6 +2,8 @@
 from __future__ import print_function
 
 from modules.gilded_rose import *
+from modules.item import *
+from modules.item_factory import * 
 
 if __name__ == "__main__":
     items = [
@@ -17,10 +19,11 @@ if __name__ == "__main__":
     ]
 
     days = 2
+    gilded = GildedRose(items)
     for day in range(days):
         print("-------- day %s --------" % day)
         print("name, sellIn, quality")
-        for item in items:
+        for item in gilded.items:
             print(item)
         print("")
-        GildedRose(items).update_quality()
+        gilded.update_quality()
