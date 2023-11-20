@@ -23,35 +23,33 @@ class GildedRose(object):
                         # Special variation of quality depending on the sell_in value for passes
                         if item.name == "Backstage passes to a TAFKAL80ETC concert":
                             # Double increase if sell_in lower than 11
-                            if item.sell_in < 11:
-                                if item.quality < 50:
-                                    item.quality = item.quality + 1
+                            if (item.sell_in < 11) and (item.quality < 50):
+                                item.quality = item.quality + 1
                                 
                             # Triple increase if sell_in lower than 6
-                            if item.sell_in < 6:
-                                if item.quality < 50:
-                                    item.quality = item.quality + 1
+                            if (item.sell_in < 6) and (item.quality < 50):
+                                item.quality = item.quality + 1
                                                                 
                 # Sell_in value does not change for Sulfuras, if != decrease the sell_in
                 item.sell_in = item.sell_in - 1
                 
                 # Negative sell_in induces additional quality decrease if item != Aged Brie, Backstage passes and Sulfuras
                 if item.sell_in < 0:
-                    if item.name != "Aged Brie":
-                        if item.name != "Backstage passes to a TAFKAL80ETC concert":
-                            if item.quality > 0:
-                                if item.name != "Sulfuras, Hand of Ragnaros":
-                                    item.quality = item.quality - 1
+                    if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
+                        if item.quality > 0:
+                            item.quality = item.quality - 1
                                 
                         # If sell_in negative for Backstage passes, quality = 0
-                        else:
-                            item.quality = item.quality - item.quality
+                    elif item.name =="Backstage passes to a TAFKAL80ETC concert":
+                        item.quality = item.quality - item.quality
                         
                     # Negative sell_in for Aged Brie increases the quality by 1 if quality < 50
-                    else:
+                    elif item.name == "Aged Brie":
                         if item.quality < 50:
                             item.quality = item.quality + 1
-                        
+    
+    
+    # The same function but repeated n_days times                   
     def update_quality_multiple_day(self, n_days):
         for i in range(n_days):
             self.update_quality()
