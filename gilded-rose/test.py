@@ -12,6 +12,8 @@ class GildedRoseTest(unittest.TestCase):
                  Item("Backstage passes to a TAFKAL80ETC concert", 5, 10),
                  Item("Backstage passes to a TAFKAL80ETC concert", 2, 48),
                  Item("Aged Brie", -1, 40),
+                 Item("Sulfuras, Hand of Ragnaros", 4, 30),
+
 ]
         gilded_rose = GildedRose(items)
         self.assertEquals(4, items[1].sell_in)
@@ -31,6 +33,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEquals(50, items[5].quality)
         self.assertEquals(4, items[1].sell_in)
         self.assertEquals(16, items[4].quality)
+        self.assertEquals(30, items[7].quality)
         gilded_rose.update_quality()
         self.assertEquals(0, items[0].quality)
         self.assertEquals(4, items[1].sell_in)
