@@ -40,6 +40,7 @@ class GildedRoseTest(unittest.TestCase):
     # Unit Test 1
     def test_quality_day_one(self):
         gilded_rose = GildedRose(test_cases_one_day["it"])
+        gilded_rose.behavior()
         gilded_rose.update_quality()
         
         for i, expected in enumerate(test_cases_one_day["expect_qual"]):
@@ -51,6 +52,7 @@ class GildedRoseTest(unittest.TestCase):
     # Unit Test 2
     def test_quality_week_one(self):
         gilded_rose = GildedRose(test_cases_one_week["it"])
+        gilded_rose.behavior()
         gilded_rose.update_quality_multiple_day(7)
         
         for i, expected in enumerate(test_cases_one_week["expect_qual"]):
