@@ -1,5 +1,17 @@
 # -*- coding: utf-8 -*-
 
+class ItemFactory:
+    def new_Item(self, name, sell_in, quality):
+        if name == "Aged Brie":
+            return AgedBrie(name, sell_in, quality)
+        elif name == "Backstage passes to a TAFKAL80ETC concert":
+            return BackstagePass(name, sell_in, quality)
+        elif name == "Sulfuras, Hand of Ragnaros":
+            return Sulfuras(name, sell_in, quality)
+        else:
+            return OtherItem(name, sell_in, quality)
+        
+        
 class GildedRose(object):
 
     def __init__(self, items):
@@ -15,8 +27,7 @@ class GildedRose(object):
                 self.items[ind] = Sulfuras(item.name, item.sell_in, item.quality)
             else:
                 self.items[ind] = OtherItem(item.name, item.sell_in, item.quality)
-        
-                
+         
     def update_quality(self):
         for item in self.items:
             item.update_quality()
@@ -26,57 +37,6 @@ class GildedRose(object):
             for i in range(n_days):
                 item.update_quality()
             
-#         for item in self.items:
-#             # For Sulfuras, nothing changes
-#             if item.name != "Sulfuras, Hand of Ragnaros": 
-                           
-#                 # Consider the normal items
-#                 if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
-#                     if item.quality > 0:
-#                         item.quality = item.quality - 1
-#                         # Quality of Conjured Items decreases twice as fast
-#                         if ("Conjured" in item.name) and (item.quality > 0):
-#                             item.quality = item.quality - 1
-#                         # Additional quality decrease if negative sell_in
-#                         if (item.sell_in < 0) and (item.quality > 0):
-#                             item.quality = item.quality - 1
-                            
-#                     item.sell_in = item.sell_in - 1
-                            
-#                 # Specific items    
-#                 else:
-#                     # For Aged Brie or backstage passes, simple quality increase
-#                     if item.quality < 50:
-#                         item.quality = item.quality + 1
-#                         # Special variation of quality depending on the sell_in value for passes
-#                         if item.name == "Backstage passes to a TAFKAL80ETC concert":
-#                             # Double increase if sell_in lower than 11
-#                             if (item.sell_in < 11) and (item.quality < 50):
-#                                 item.quality = item.quality + 1
-                                
-#                             # Triple increase if sell_in lower than 6
-#                             if (item.sell_in < 6) and (item.quality < 50):
-#                                 item.quality = item.quality + 1
-                            
-#                             # If sell_in negative for Backstage passes, quality = 0    
-#                             if item.sell_in < 0:
-#                                 item.quality = item.quality - item.quality
-                                
-#                         if item.name == "Aged Brie":
-#                             # Additional quality increase if negative sell_in
-#                             if (item.sell_in < 0) and (item.quality < 50):
-#                                 item.quality = item.quality + 1
-                                                                
-#                     # Sell_in value does not change for Sulfuras, if != decrease the sell_in
-#                     item.sell_in = item.sell_in - 1    
-    
-    
-#     # The same function but repeated n_days times                   
-#     def update_quality_multiple_day(self, n_days):
-#         for i in range(n_days):
-#             self.update_quality()
-
-
 class Item:
     def __init__(self, name, sell_in, quality):
         self.name = name

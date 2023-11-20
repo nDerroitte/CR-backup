@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from modules.gilded_rose import Item, GildedRose
+from modules.gilded_rose import Item, GildedRose, ItemFactory
 
 
 test_cases_one_day = {
@@ -39,27 +39,25 @@ class GildedRoseTest(unittest.TestCase):
     
     # Unit Test 1
     def test_quality_day_one(self):
-        gilded_rose = GildedRose(test_cases_one_day["it"])
-        gilded_rose.behavior()
-        gilded_rose.update_quality()
-        
-        for i, expected in enumerate(test_cases_one_day["expect_qual"]):
-            self.assertEquals(expected, gilded_rose.items[i].quality)
+
+        factory = ItemFactory()
+        for i, elm in enumerate(test_cases_one_day["it"]):
+            it = factory.new_Item(elm.name, elm.sell_in, elm.quality)
+            it.update_quality()
             
-        for j, expected in enumerate(test_cases_one_day["expect_sellin"]):
-            self.assertEquals(expected, gilded_rose.items[j].sell_in)
+            self.assertEquals(test_cases_one_day["expect_qual"][i], it.quality)
+            self.assertEquals(test_cases_one_day["expect_sellin"][i], it.sell_in)
             
     # Unit Test 2
     def test_quality_week_one(self):
-        gilded_rose = GildedRose(test_cases_one_week["it"])
-        gilded_rose.behavior()
-        gilded_rose.update_quality_multiple_day(7)
         
-        for i, expected in enumerate(test_cases_one_week["expect_qual"]):
-            self.assertEquals(expected, gilded_rose.items[i].quality)
+        factory = ItemFactory()
+        for i, elm in enumerate(test_cases_one_week["it"]):
+            it = factory.new_Item(elm.name, elm.sell_in, elm.quality)
+            it.update_quality_multiple_day(7)
             
-        for j, expected in enumerate(test_cases_one_week["expect_sellin"]):
-            self.assertEquals(expected, gilded_rose.items[j].sell_in)
+            self.assertEquals(test_cases_one_week["expect_qual"][i], it.quality)
+            self.assertEquals(test_cases_one_week["expect_sellin"][i], it.sell_in)
         
 
 if __name__ == '__main__':
