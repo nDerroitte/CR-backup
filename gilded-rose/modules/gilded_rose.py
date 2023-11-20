@@ -19,17 +19,6 @@ class GildedRose(object):
             else:
                 NormalItem(item.name, item.sell_in, item.quality).update_quality(item)
 
-            # if products past their sell in date    
-            if item.sell_in < 0:
-                if item.name == "Aged Brie" and item.quality < 50:
-                    item.quality += 1
-                else:
-                    if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                        item.quality = item.quality - item.quality
-                    else:
-                        if item.quality > 0 and item.name != "Sulfuras, Hand of Ragnaros":
-                            item.quality -= 1
-
 class Item:
     def __init__(self, name, sell_in, quality):
         self.name = name
@@ -48,17 +37,24 @@ class BackstagePass(Item):
             item.quality += 1
         if item.sell_in < 6 and item.quality < 50:
             item.quality += 1
+        if item.sell_in < 0:
+            item.quality = 0
 
 class AgedBrie(Item):
     def update_quality(self, item):
         item.sell_in -= 1
         if item.quality < 50:
             item.quality += 1
+        if item.sell_in < 0 and item.quality < 50:
+            item.quality += 1
 
 class NormalItem(Item):
     def update_quality(self, item):
         item.sell_in -= 1
-        item.quality -= 1
+        if item.quality > 0:
+            item.quality -= 1
+        if item.sell_in < 0 and item.quality > 0:
+            item.quality -= 1
 
 class ConjuredItem(Item):
     def __init__(self, name, sell_in, quality):
@@ -66,4 +62,5 @@ class ConjuredItem(Item):
 
     def update_quality(self, item):
         item.sell_in -= 1
-        item.quality -= 2
+        if item.quality > 0:
+            item.quality -= 2
