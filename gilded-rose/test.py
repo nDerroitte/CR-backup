@@ -30,7 +30,7 @@ class GildedRoseTest(unittest.TestCase):
             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=9, quality=50),
             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=4, quality=50),
             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=-6, quality=0),
-            Item(name="Conjured Mana Cake", sell_in=2, quality=5),]
+            Item(name="Conjured Mana Cake", sell_in=2, quality=4),]
 
         for item, test in zip(gilded_rose.items, testcases):
             self.assertEquals(item.name, test.name)
