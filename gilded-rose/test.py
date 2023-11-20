@@ -32,7 +32,7 @@ class GildedRoseTest(unittest.TestCase):
             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=-6, quality=0),
             Item(name="Conjured Mana Cake", sell_in=2, quality=5),]
 
-        for item, test in zip(items, testcases):
+        for item, test in zip(gilded_rose.items, testcases):
             self.assertEquals(item.name, test.name)
             self.assertEquals(item.sell_in, test.sell_in)
             self.assertEquals(item.quality, test.quality)
@@ -66,7 +66,7 @@ class GildedRoseTest(unittest.TestCase):
                 Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=-12, quality=0),
                 Item(name="Conjured Mana Cake", sell_in=-4, quality=0),]
 
-        for item, test in zip(items, testcases):
+        for item, test in zip(gilded_rose.items, testcases):
             self.assertEquals(item.name, test.name)
             self.assertEquals(item.sell_in, test.sell_in)
             self.assertEquals(item.quality, test.quality)

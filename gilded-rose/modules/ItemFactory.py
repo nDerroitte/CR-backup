@@ -7,8 +7,8 @@ class ItemFactory():
         if "Sulfuras" in current_item.name:
             return Sulfuras(current_item.name, current_item.sell_in, current_item.quality)
         elif current_item.name == "Aged Brie":
-             return AgedBrie(current_item, current_item.sell_in, current_item.quality)
+             return AgedBrie(current_item.name, current_item.sell_in, current_item.quality)
         elif "Backstage" in current_item.name:
-             return Backstage(current_item, current_item.sell_in, current_item.quality)
+             return Backstage(current_item.name, current_item.sell_in, current_item.quality)
         else:
             return current_item

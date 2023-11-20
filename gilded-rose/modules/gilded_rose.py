@@ -17,13 +17,14 @@ class GildedRose(object):
 # -sell_in >0, quality -2
 
     def __init__(self, items):
-        self.items = items
+        factory = ItemFactory()
+        self.items = [factory.create_item(item) for item in items]
     
     def update_quality(self):
-        factory = ItemFactory()
-        for item in self.items:
-            new_item = factory.create_item(item)
-            new_item.update_quality()
+        for i in self.items:
+            print(type(i))
+            i.update_quality()
+
 
             #Sulfuras cannot change
             #if "Sulfuras" not in item.name:
