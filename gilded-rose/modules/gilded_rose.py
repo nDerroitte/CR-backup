@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-exception_objects = ["Aged Brie", "Backstage passes to a TAFKAL80ETC concert", "Sulfuras, Hand of Ragnaros"]
+exception_objects = ["Aged Brie",
+                     "Backstage passes to a TAFKAL80ETC concert",
+                     "Sulfuras, Hand of Ragnaros"]
 
 
 class GildedRose(object):

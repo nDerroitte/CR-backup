@@ -58,7 +58,6 @@ class GildedRoseTest(unittest.TestCase):
         for item in gilded_rose.items:
             if item.name == "Backstage passes to a TAFKAL80ETC concert" and item.sell_in < 0:
                 self.assertEqual(item.quality, 0)
-                print(item.name)
             if item.name == "Backstage passes to a TAFKAL80ETC concert" and item.sell_in > 0:
                 self.assertEqual(item.quality, 35)
 
