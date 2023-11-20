@@ -19,18 +19,24 @@ we are now left in quite the mess ! Here's what he left
 
 ** About Item Quality **
 
-By default, every update, the quality decreases by 1. However, there are some exceptions for specific item rules as mentionned beneath.
+By default, every update, the quality decreases by 1. However, the quality cannot be lower than 0 or higher than 50. For the increase by 1, there are some exceptions for specific item rules as mentionned beneath.
 
 ** Item quality to Sell-in relationship **
 
-By default, every update, the sell-in decreases by 1 except for the Sulfuras.
+By default, every update, the sell-in decreases by 1. If the sell-in is negative the quality decrease by 2.
 
 ** About specific item rules **
 
 - Sulfuras is legendary which means the quality and the sell_in doesn't change.
 - Aged Brie & Backstage passes increase in quality every day.
-	-Aged Brie increases quality by 1 every day
-	-Backstage increases by 1 if you have to sell it in 6-10 days and by 2 if you have to sell it in 5 or less days
+	-Aged Brie's quality increases
+		-by 1 if sell-in > 0
+		-by 2 if sell-in < 0
+	-Backstage's quality increases
+		-by 1 if you have to sell it in 11 days or more
+		-by 2 if you have to sell it in 6-10 days
+		-by 3 if you have to sell it in 5 or less days
+		if the sell-in is negative, the quality is 0.
 - Conjured items incxreases in quality twice every day.
 
 ```
