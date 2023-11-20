@@ -16,7 +16,8 @@ def get_test_case():
         Item(name="Conjured Mana Cake", sell_in=3, quality=7),
         Item(name="Apple", sell_in=999, quality=12),
         Item(name="Peer", sell_in=-2350, quality=48),
-        Item(name="Banana", sell_in=78, quality=45)
+        Item(name="Banana", sell_in=78, quality=45),
+        Item(name="Conjured", sell_in=5, quality=36)
     ]
     return test_case
 
@@ -60,6 +61,15 @@ class GildedRoseTest(unittest.TestCase):
                 self.assertEqual(item.quality, 0)
             if item.name == "Backstage passes to a TAFKAL80ETC concert" and item.sell_in > 0:
                 self.assertEqual(item.quality, 35)
+
+    def test_conjured(self):
+        test_case = get_test_case()
+        gilded_rose = GildedRose(test_case)
+        for i in range(10):
+            gilded_rose.update_quality()
+        for item in gilded_rose.items:
+            if item.name == "Conjured":
+                self.assertEqual(item.quality, 10)
 
 
 if __name__ == '__main__':

@@ -6,19 +6,25 @@ class GildedRose(object):
     def __init__(self, items):
         self.items = items
         for idx, item in enumerate(self.items):
-            if item.name == "Aged Brie":
-                item = AgedBrie(item.name, item.sell_in, item.quality)
-            elif item.name == "Backstage passes to a TAFKAL80ETC concert":
-                item = BackstagePasses(item.name, item.sell_in, item.quality)
-            elif item.name == "Sulfuras, Hand of Ragnaros":
-                item = Sulfuras(item.name, item.sell_in, item.quality)
-            else:
-                item = PlainObject(item.name, item.sell_in, item.quality)
-            self.items[idx] = item
+            self.items[idx] = ObjectFactory.create_object(item.name, item.sell_in, item.quality)
 
     def update_quality(self):
         for item in self.items:
             item.update_quality()
+
+
+class ObjectFactory:
+    def create_object(name: str, sell_in: int, quality: int):
+        if name == "Aged Brie":
+            return AgedBrie(name, sell_in, quality)
+        elif name == "Backstage passes to a TAFKAL80ETC concert":
+            return BackstagePasses(name, sell_in, quality)
+        elif name == "Sulfuras, Hand of Ragnaros":
+            return Sulfuras(name, sell_in, quality)
+        elif name == "Conjured":
+            return Conjured(name, sell_in, quality)
+        else:
+            return PlainObject(name, sell_in, quality)
 
 
 class Item:
@@ -66,3 +72,12 @@ class Sulfuras(Item):
     def update_quality(self):
         self.quality = self.quality
         self.sell_in = self.sell_in
+
+
+class Conjured(Item):
+    def update_quality(self):
+        self.quality = max(self.quality - 1, 0)
+        self.sell_in -= 2
+        if self.sell_in < 0:
+            if self.quality > 0:
+                self.quality = max(self.quality - 2, 0)
