@@ -1,9 +1,7 @@
-from modules.Item import Item
+from modules.GeneralItem import GeneralItem
 
-class Conjured(Item):
+class Conjured(GeneralItem):
     def update_quality(self):
-        self.sell_in -= 1
-        if self.quality > 0:
-            self.quality -= 2
-        if self.quality > 0 and self.sell_in < 0:
-            self.quality -= 2
+        super().update_quality()
+        super().update_quality()
+        self.sell_in += 1
